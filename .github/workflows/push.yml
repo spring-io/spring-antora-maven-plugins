@@ -4,3 +4,8 @@ on: push
 jobs:
   verify:
     uses: ./.github/workflows/verify.yml
+  artifactory:
+    needs: verify
+    steps:
+      - name: Deploy to Artifactory
+        run: mvn deploy -Partifactory

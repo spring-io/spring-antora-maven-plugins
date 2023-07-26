@@ -165,4 +165,35 @@
       </plugin>
     </plugins>
   </build>
+  <profiles>
+    <profile>
+      <id>artifactory</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.jfrog.buildinfo</groupId>
+            <artifactId>artifactory-maven-plugin</artifactId>
+            <version>3.6.1</version>
+            <executions>
+              <execution>
+                <id>build-info</id>
+                <goals>
+                  <goal>publish</goal>
+                </goals>
+                <configuration>
+                  <publisher>
+                    <contextUrl>https://repo.spring.io</contextUrl>
+                    <username>{{ARTIFACTORY_PASSWORD}}</username>
+                    <password>{{ARTIFACTORY_PASSWORD}}</password>
+                    <repoKey>libs-milestones-local</repoKey>
+                    <snapshotRepoKey>libs-snapshot-local</snapshotRepoKey>
+                  </publisher>
+                </configuration>
+              </execution>
+            </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
