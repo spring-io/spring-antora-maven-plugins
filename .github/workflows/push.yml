@@ -18,3 +18,6 @@ jobs:
           check-latest: true
       - name: Deploy to Artifactory
         run: mvn deploy -Partifactory
+        env:
+          ARTIFACTORY_USERNAME: ${{ secrets.ARTIFACTORY_USERNAME }}
+          ARTIFACTORY_PASSWORD: ${{ secrets.ARTIFACTORY_PASSWORD }}
