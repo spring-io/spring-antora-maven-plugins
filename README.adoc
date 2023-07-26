@@ -1,7 +1,7 @@
 = Spring Antora Maven Plugins
 :version: 1.0.0-SNAPSHOT
 
-== spring-antora-yml-maven-plugin
+== antora-component-version-maven-plugin
 
 This plugin defines https://books.sonatype.com/mvnref-book/reference/resource-filtering-sect-properties.html[Maven properties] that can be used for generating an https://docs.antora.org/antora/latest/component-version-descriptor/[antora.yml].
 The `antora.yml` can be included using the https://gitlab.com/antora/antora-collector-extension[Antora Collector Extension].
@@ -31,9 +31,9 @@ a| Generates the Antora prerelease attribute from the Maven version property:
 * `1.0.0` will result in the prerelease attribute being set to `false`
 |===
 
-=== Configuring spring-antora-yml-maven-plugin
+=== Configuring antora-component-version-maven-plugin
 
-This section describes how to configure and use the `spring-antora-yml-maven-plugin`.
+This section describes how to configure and use the `antora-component-version-maven-plugin`.
 
 To start, define the plugin in your build:
 
@@ -42,7 +42,7 @@ To start, define the plugin in your build:
 ----
 <plugin>
     <groupId>io.spring.maven.antora</groupId>
-    <artifactId>spring-antora-yml-maven-plugin</artifactId>
+    <artifactId>antora-component-version-maven-plugin</artifactId>
     <version>{version}</version>
     <executions>
         <execution>

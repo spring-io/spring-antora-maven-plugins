@@ -3,11 +3,11 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>io.spring.maven.antora</groupId>
-  <artifactId>spring-antora-yml-maven-plugin</artifactId>
+  <artifactId>antora-component-version-maven-plugin</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
 
-  <name>spring-antora-yml-plugin Maven Plugin</name>
+  <name>antora-component-version-plugin Maven Plugin</name>
 
   <!-- FIXME change it to the project's website -->
   <url>http://maven.apache.org</url>
@@ -73,7 +73,7 @@
         <artifactId>maven-plugin-plugin</artifactId>
         <version>3.2</version>
         <configuration>
-          <goalPrefix>spring-antora-yml-plugin</goalPrefix>
+          <goalPrefix>antora-component-version</goalPrefix>
           <skipErrorNoDescriptorsFound>false</skipErrorNoDescriptorsFound>
         </configuration>
         <executions>
