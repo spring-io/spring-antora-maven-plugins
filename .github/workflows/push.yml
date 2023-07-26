@@ -5,6 +5,7 @@ jobs:
   verify:
     uses: ./.github/workflows/verify.yml
   artifactory:
+    runs-on: ubuntu-latest
     needs: verify
     steps:
       - name: Deploy to Artifactory
