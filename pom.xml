@@ -8,12 +8,32 @@
   <packaging>maven-plugin</packaging>
 
   <name>antora-component-version-plugin Maven Plugin</name>
-
-  <!-- FIXME change it to the project's website -->
-  <url>http://maven.apache.org</url>
+  <description>Provides properties for creating an antora.yml file.</description>
+  <url>https://github.com/spring-io/spring-antora-maven-plugins</url>
+  <licenses>
+    <license>
+      <name>The Apache License, Version 2.0</name>
+      <url>https://www.apache.org/licenses/LICENSE-2.0</url>
+    </license>
+  </licenses>
+  <inceptionYear>2023</inceptionYear>
+  <developers>
+    <developer>
+      <name>Rob Winch</name>
+      <email>rwinch@sers.noreply.github.com</email>
+      <organization>Spring Team</organization>
+      <organizationUrl>https://spring.io</organizationUrl>
+    </developer>
+  </developers>
+  <scm>
+    <connection>scm:git:git://github.com/spring-io/spring-antora-maven-plugins.git</connection>
+    <developerConnection>scm:git:ssh://github.com/spring-io/spring-antora-maven-plugins.git</developerConnection>
+    <url>https://github.com/spring-io/spring-antora-maven-plugins</url>
+  </scm>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
   </properties>
