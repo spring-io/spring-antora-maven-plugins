@@ -1,4 +1,4 @@
-name: Release
+name: Release ${{ github.event.inputs.release-version }}
 
 on:
   workflow_dispatch:
@@ -44,7 +44,7 @@ jobs:
         env:
           MAVEN_USERNAME: ${{ secrets.OSSRH_S01_TOKEN_USERNAME }}
           MAVEN_CENTRAL_TOKEN: ${{ secrets.OSSRH_S01_TOKEN_PASSWORD }}
-          MAVEN_GPG_PASSPHRASE: ${{ secrets.MAVEN_GPG_PASSPHRASE }}
+          MAVEN_GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
       - name: Prepare Next Development Version
         run: mvn versions:set -DnewVersion="${{ github.event.inputs.next-development-version }}"
       - name: Push Next Development Version
