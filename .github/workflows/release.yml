@@ -1,5 +1,5 @@
-name: Release ${{ github.event.inputs.release-version }}
-
+name: Release
+run-name: ${{ format('{0} ({1})', github.workflow, github.event.inputs.release-version) }}
 on:
   workflow_dispatch:
     inputs:
