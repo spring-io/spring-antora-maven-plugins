@@ -176,8 +176,12 @@
     <profile>
       <id>ossrh</id>
       <properties>
-        <gpg.executable>gpg</gpg.executable>
+        <gpg.executable>gpg2</gpg.executable>
         <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
+        <gpgArguments>
+          <arg>--pinentry-mode</arg>
+          <arg>loopback</arg>
+        </gpgArguments>
       </properties>
       <build>
         <plugins>
@@ -195,17 +199,25 @@
               </execution>
             </executions>
           </plugin>
+          <!-- https://central.sonatype.org/publish/publish-maven/ -->
+          <plugin>
+            <groupId>org.sonatype.plugins</groupId>
+            <artifactId>nexus-staging-maven-plugin</artifactId>
+            <version>1.6.13</version>
+            <extensions>true</extensions>
+            <configuration>
+              <serverId>ossrh</serverId>
+              <nexusUrl>https://s01.oss.sonatype.org/</nexusUrl>
+              <autoReleaseAfterClose>true</autoReleaseAfterClose>
+            </configuration>
+          </plugin>
         </plugins>
       </build>
       <distributionManagement>
         <snapshotRepository>
           <id>ossrh</id>
-          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+          <url>https://s01.oss.sonatype.org/content/repositories/snapshots</url>
         </snapshotRepository>
-        <repository>
-          <id>ossrh</id>
-          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
       </distributionManagement>
     </profile>
     <profile>
