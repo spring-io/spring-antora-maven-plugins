@@ -178,10 +178,6 @@
       <properties>
         <gpg.executable>gpg2</gpg.executable>
         <gpg.passphrase>${env.GPG_PASSPHRASE}</gpg.passphrase>
-        <gpgArguments>
-          <arg>--pinentry-mode</arg>
-          <arg>loopback</arg>
-        </gpgArguments>
       </properties>
       <build>
         <plugins>
@@ -196,6 +192,12 @@
                 <goals>
                   <goal>sign</goal>
                 </goals>
+                <configuration>
+                  <gpgArguments>
+                    <arg>--pinentry-mode</arg>
+                    <arg>loopback</arg>
+                  </gpgArguments>
+                </configuration>
               </execution>
             </executions>
           </plugin>
