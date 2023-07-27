@@ -1,0 +1,25 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release-version:
+        description: The version to release
+        required: true
+      next-development-version:
+        description: The next development version
+        required: true
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          cache: 'maven'
+          check-latest: true
+      - name: Prepare Release
+        run: mvn --batch-mode release:prepare -Dtag="v${{ github.event.inputs.release-version }}" -DreleaseVersion="${{ github.event.inputs.release-version }}" -DdevelopmentVersion="${{ github.event.inputs.next-development-version }}"
