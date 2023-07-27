@@ -30,7 +30,7 @@ jobs:
       - name: Prepare Release
         run: mvn versions:set -DnewVersion="${{ github.event.inputs.release-version }}"
       - name: Verify Release
-        run: verify
+        run: mvn verify
       - name: Tag the ${{ github.event.inputs.release-version }} Release
         run: |
           git config --local user.name "Rob Winch"
