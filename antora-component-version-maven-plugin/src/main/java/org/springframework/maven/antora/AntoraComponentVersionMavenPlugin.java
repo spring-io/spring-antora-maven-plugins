@@ -35,6 +35,7 @@ public class AntoraComponentVersionMavenPlugin
 
 	public void execute()
 			throws MojoExecutionException {
+		System.out.println("AntoraComponentVersionMavenPlugin!!!!!!!!!!!!!!");
 		String version = project.getVersion();
 		project.getProperties().setProperty("antora-component.version", AntoraYmlUtil.componentVersionFromVersion(version));
 		project.getProperties().setProperty("antora-component.prerelease", AntoraYmlUtil.prereleaseFromVersion(version));

@@ -6,10 +6,11 @@
 This plugin defines https://books.sonatype.com/mvnref-book/reference/resource-filtering-sect-properties.html[Maven properties] that can be used for generating an https://docs.antora.org/antora/latest/component-version-descriptor/[antora.yml].
 The `antora.yml` can be included using the https://gitlab.com/antora/antora-collector-extension[Antora Collector Extension].
 
-* <<_supported_attributes>>
-* <<_configuring_spring_antora_yml_maven_plugin>>
+* <<antora-component-version-attributes>>
+* <<antora-component-version-configuring>>
 
-=== Supported Attributes
+[[antora-component-version-attributes]]
+=== antora-component-version-maven-plugin Supported Attributes
 
 [%header,cols="1s,1,1"]
 |===
@@ -31,6 +32,7 @@ a| Generates the Antora prerelease attribute from the Maven version property:
 * `1.0.0` will result in the prerelease attribute being set to `false`
 |===
 
+[[antora-component-version-configuring]]
 === Configuring antora-component-version-maven-plugin
 
 This section describes how to configure and use the `antora-component-version-maven-plugin`.
@@ -114,3 +116,131 @@ ext:
         dir: target/classes/antora-resources
 ----
 
+
+== antora-maven-plugin
+
+A Maven Plugin (similar to the https://docs.antora.org/gradle-plugin/latest/[Gradle Antora Plugin]) that leverages https://github.com/mojo-executor/mojo-executor[mojo-executor] to dynamically setup and invoke the necessary Maven plugins to setup and run Antora from a Maven build.
+
+[[antora-maven-plugin-attributes]]
+=== antora-maven-plugin Supported Attributes
+
+[%header,cols="1s,1,2a"]
+|===
+| Maven Property Name
+| Description
+| Example
+
+| `<version>`
+| The version of Antora to use. Default is `3.2.0-alpha.2`
+|
+.pom.xml
+[source,xml]
+----
+<configuration>
+  <environment>
+    <version>3.1.4</version>
+  </environment>
+</configuration>
+----
+
+| `environment`
+| The optional environment element that contains additional environment variables.
+|
+.pom.xml
+[source,xml]
+----
+<configuration>
+  <environment>
+    <SEARCH_API_KEY>12346</SEARCH_API_KEY>
+    <GOOGLE_ANALYTICS_KEY>abcxyz</GOOGLE_ANALYTICS_KEY>
+  </environment>
+</configuration>
+----
+
+| `options`
+| The optional environment element that contains additional Antora CLI options.
+The Default is `--to-dir=target/antora/site`, `--stactrace`
+|
+.pom.xml
+[source,xml]
+----
+<configuration>
+  <options>
+    <option>--log-failure-level=warn</log-failure-level>
+  </options>
+</configuration>
+----
+
+| `playbook`
+| The Antora Playbook to use
+The Default is `antora-playbook.yml`
+|
+.pom.xml
+[source,xml]
+----
+<configuration>
+  <options>
+    <playbook>src/main/antora/antora-playbook.yml</playbook>
+  </options>
+</configuration>
+----
+
+| `packages`
+| The optional property that specifies any additional Node.js Antora and Asciidoctor extension packages the plugin should install.
+The Default is `antora-playbook.yml`
+|
+.pom.xml
+[source,xml]
+----
+<configuration>
+  <packages>
+    <package>@springio/asciidoctor-extensions@1.0.0-alpha.9</package>
+  </packages>
+</configuration>
+----
+|===
+
+
+[[antora-configuring]]
+=== Configuring antora-maven-plugin
+
+This section describes how to configure and use the `antora-maven-plugin`.
+
+To start, define the plugin in your build within the root of a folder that contains your Antora files:
+
+.pom.xml
+[source,xml,subs=+attributes]
+----
+<plugin>
+    <groupId>io.spring.maven.antora</groupId>
+    <artifactId>antora-maven-plugin</artifactId>
+    <version>{version}</version>
+    <executions>
+        <execution>
+            <id>antora</id>
+            <goals>
+                <goal>antora</goal>
+            </goals>
+        </execution>
+    </executions>
+</plugin>
+----
+
+You can now invoke Antora using `antora:antora` and view the results:
+
+[source,bash]
+----
+$ mvn antora:antora
+...
+# view the results
+$ tree target/antora/site -P '*.html'
+├── _
+│   ├── css
+│   ├── font
+│   ├── img
+│   └── js
+│       └── vendor
+└── test
+    └── 1.0.0-SNAPSHOT
+        └── index.html
+----

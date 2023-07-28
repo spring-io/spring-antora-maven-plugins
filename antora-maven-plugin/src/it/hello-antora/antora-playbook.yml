@@ -1,0 +1,14 @@
+site:
+  title: Sample
+content:
+  sources:
+    - url: ./../../../..
+      branches: HEAD
+      start_path: antora-maven-plugin/target/it/hello-antora/
+ui:
+  bundle:
+    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
+    snapshot: true
+runtime:
+  log:
+    failure_level: warn
