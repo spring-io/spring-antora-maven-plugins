@@ -16,6 +16,7 @@ package org.springframework.maven.antora;
  * limitations under the License.
  */
 
+import org.apache.maven.model.Resource;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 
@@ -23,6 +24,8 @@ import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 import org.apache.maven.project.MavenProject;
+
+import java.io.File;
 
 /**
  * Goal which touches a timestamp file.
@@ -35,9 +38,14 @@ public class AntoraComponentVersionMavenPlugin
 
 	public void execute()
 			throws MojoExecutionException {
-		System.out.println("AntoraComponentVersionMavenPlugin!!!!!!!!!!!!!!");
 		String version = project.getVersion();
 		project.getProperties().setProperty("antora-component.version", AntoraYmlUtil.componentVersionFromVersion(version));
 		project.getProperties().setProperty("antora-component.prerelease", AntoraYmlUtil.prereleaseFromVersion(version));
+
+		Resource antoraResource = new Resource();
+		antoraResource.setFiltering(true);
+		String antoraResources = new File(project.getBasedir(), "src/main/antora/resources").getAbsolutePath();
+		antoraResource.setDirectory(antoraResources);
+		project.getResources().add(antoraResource);
 	}
 }

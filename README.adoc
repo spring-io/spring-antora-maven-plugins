@@ -47,32 +47,22 @@ To start, define the plugin in your build:
     <artifactId>antora-component-version-maven-plugin</artifactId>
     <version>{version}</version>
     <executions>
-        <execution>
-            <id>antora-component-version</id>
-            <goals>
-                <goal>antora-component-version</goal>
-            </goals>
-        </execution>
+      <execution>
+        <goals>
+          <goal>antora-component-version</goal>
+        </goals>
+      </execution>
     </executions>
 </plugin>
 ----
 
-Second, ensure that https://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html[Maven Filtering] is enabled:
+Next, create a resource that will have https://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html[Maven Filtering] performed on it.
+The plugin adds the folder `src/main/antora/resources` as a filtered resource by default and we will use that location in our example.
+Alternatively, you can explicitly add https://maven.apache.org/plugins/maven-resources-plugin/examples/filter.html[Maven Filtering] to any location and place it there.
 
-.pom.xml
-[source,xml]
-----
-<resources>
-    <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-    </resource>
-</resources>
-----
+Here is an example using the default location:
 
-Next, create a resource that will be filtered with the properties added by the plugin:
-
-.src/main/resources/antora-resources/antora.yml
+.src/main/antora/resources/antora-resources/antora.yml
 [source,yml]
 ----
 version: ${antora-component.version}
@@ -82,6 +72,8 @@ asciidoc:
     attribute-missing: 'warn'
 # ... more attributes (possibly with values from other properties) as needed ...
 ----
+
+NOTE: The folder `antora-resources` is used so that the https://gitlab.com/antora/antora-collector-extension[Antora Collector Extension] can import Antora resources without picking up any other resources your project may have (e.g. resources for your Java project).
 
 Finally, you can generate the resource by invoking `process-resources`:
 

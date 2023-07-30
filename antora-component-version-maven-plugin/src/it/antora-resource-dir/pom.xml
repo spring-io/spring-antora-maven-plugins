@@ -14,12 +14,6 @@
   </properties>
 
   <build>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
     <plugins>
       <plugin>
         <groupId>@project.groupId@</groupId>
@@ -27,7 +21,6 @@
         <version>@project.version@</version>
         <executions>
           <execution>
-            <id>antora-component-version</id>
             <goals>
               <goal>antora-component-version</goal>
             </goals>
