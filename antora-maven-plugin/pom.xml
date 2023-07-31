@@ -3,12 +3,12 @@
 
   <groupId>io.spring.maven.antora</groupId>
   <artifactId>antora-maven-plugin</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.2</version>
   <packaging>maven-plugin</packaging>
   <parent>
     <groupId>io.spring.maven.antora</groupId>
     <artifactId>spring-antora-maven-plugin-parent</artifactId>
-    <version>0.0.2-SNAPSHOT</version>
+    <version>0.0.2</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
