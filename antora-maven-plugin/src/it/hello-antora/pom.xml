@@ -14,25 +14,12 @@
   </properties>
 
   <build>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
     <plugins>
       <plugin>
         <groupId>@project.groupId@</groupId>
         <artifactId>@project.artifactId@</artifactId>
         <version>@project.version@</version>
-        <executions>
-          <execution>
-            <id>antora</id>
-            <goals>
-              <goal>antora</goal>
-            </goals>
-          </execution>
-        </executions>
+        <extensions>true</extensions>
       </plugin>
     </plugins>
   </build>

@@ -14,28 +14,15 @@
   </properties>
 
   <build>
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <filtering>true</filtering>
-      </resource>
-    </resources>
     <plugins>
       <plugin>
         <groupId>@project.groupId@</groupId>
         <artifactId>@project.artifactId@</artifactId>
         <version>@project.version@</version>
-        <executions>
-          <execution>
-            <id>antora</id>
-            <goals>
-              <goal>antora</goal>
-            </goals>
-            <configuration>
-              <playbook>src/main/antora/antora-playbook.yml</playbook>
-            </configuration>
-          </execution>
-        </executions>
+        <extensions>true</extensions>
+        <configuration>
+          <playbook>src/main/antora/antora-playbook.yml</playbook>
+        </configuration>
       </plugin>
     </plugins>
   </build>

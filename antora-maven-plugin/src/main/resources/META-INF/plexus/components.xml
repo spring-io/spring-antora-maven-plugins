@@ -1,0 +1,20 @@
+<component-set>
+    <components>
+        <component>
+            <role>org.apache.maven.lifecycle.Lifecycle</role>
+            <role-hint>antora</role-hint>
+            <implementation>org.apache.maven.lifecycle.Lifecycle</implementation>
+            <configuration>
+                <id>antora</id>
+                <phases>
+                    <phase>pre-antora</phase>
+                    <phase>antora</phase>
+                    <phase>post-antora</phase>
+                </phases>
+                <default-phases>
+                    <antora>io.spring.maven.antora:antora-maven-plugin:antora</antora>
+                </default-phases>
+            </configuration>
+        </component>
+    </components>
+</component-set>
