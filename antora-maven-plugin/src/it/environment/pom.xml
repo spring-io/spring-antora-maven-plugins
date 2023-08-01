@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.example.it</groupId>
+  <artifactId>snapshot-example</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+
+  <description>A simple IT verifying the basic use case.</description>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>@project.groupId@</groupId>
+        <artifactId>@project.artifactId@</artifactId>
+        <version>@project.version@</version>
+        <extensions>true</extensions>
+        <configuration>
+          <environment>
+            <ALGOLIA_API_KEY>the-algolia-api-key</ALGOLIA_API_KEY>
+            <ALGOLIA_APP_ID>the-algolia-app-id</ALGOLIA_APP_ID>
+            <ALGOLIA_INDEX_NAME>the-algolia-index-name</ALGOLIA_INDEX_NAME>
+          </environment>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

@@ -101,6 +101,7 @@ public class AntoraMavenPlugin
 				configuration(
 					element(name("executable"), "node/node"),
 					element("arguments", createExecAntoraArguments()),
+					element("environmentVariables", createExecAntoraEnvironment()),
 					element("inheritIo", "true")
 				),
 				executionEnvironment()
@@ -140,6 +141,12 @@ public class AntoraMavenPlugin
 			artifactId("exec-maven-plugin"),
 			version("3.1.0")
 		);
+	}
+
+	private Element[] createExecAntoraEnvironment() {
+		return this.environment.entrySet().stream()
+			.map(envEntry -> MojoExecutor.element(envEntry.getKey(), envEntry.getValue()))
+			.toArray(Element[]::new);
 	}
 
 	private Element[] createExecAntoraArguments() {

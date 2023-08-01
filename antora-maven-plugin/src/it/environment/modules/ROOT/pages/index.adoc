@@ -1,0 +1,7 @@
+= Test
+
+This is a test of environment variables that are defined in the ui since asciidoctor cannot access environment variables
+
+* `ALGOLIA_APP_ID`
+* `ALGOLIA_API_KEY`
+* `ALGOLIA_INDEX_NAME`
