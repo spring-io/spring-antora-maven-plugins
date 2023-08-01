@@ -28,7 +28,8 @@ import org.apache.maven.project.MavenProject;
 import java.io.File;
 
 /**
- * Goal which touches a timestamp file.
+ * Sets the properties {@code antora-component.version} and {@code antora-component.prerelease} to be used for
+ * generating an {@code antora.yml} file.
  */
 @Mojo(name = "antora-component-version", defaultPhase = LifecyclePhase.VALIDATE)
 public class AntoraComponentVersionMavenPlugin
