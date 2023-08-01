@@ -7,8 +7,7 @@ content:
       start_path: antora-maven-plugin/target/it/hello-antora/
 ui:
   bundle:
-    url: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/HEAD/raw/build/ui-bundle.zip?job=bundle-stable
-    snapshot: true
+    url: https://github.com/spring-io/antora-ui-spring/releases/download/v0.3.3/ui-bundle.zip
 runtime:
   log:
     failure_level: warn
