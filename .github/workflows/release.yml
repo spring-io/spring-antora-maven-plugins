@@ -47,8 +47,12 @@ jobs:
       - name: Push the Tag
         run: git push origin "v${{ github.event.inputs.release-version }}"
       - name: Prepare Next Development Version
-        run: mvn versions:set -DnewVersion="${{ github.event.inputs.next-development-version }}"
-      - name: Push Next Development Version
         run: |
+          mvn versions:set -DnewVersion="${{ github.event.inputs.next-development-version }}"
           git commit -am 'Next Development Version ${{ github.event.inputs.next-development-version }}'
+      - name: Update README to latest Release
+        run: |
+          sed -i 's/^:version: .*/:version: ${{ github.event.inputs.release-version }}/' README.adoc
+          git commit -am 'Update README to Release ${{ github.event.inputs.release-version }}'
+      - name: Push the Commits
           git push origin ${GITHUB_REF_NAME:-main}
