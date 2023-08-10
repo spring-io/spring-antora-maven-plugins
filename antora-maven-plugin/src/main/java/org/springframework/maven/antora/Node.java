@@ -2,7 +2,7 @@ package org.springframework.maven.antora;
 
 public class Node {
 
-	private String version = "v18.12.1";
+	private String version = "v18.17.1";
 
 	public String getVersion() {
 		return version;
