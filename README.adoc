@@ -197,6 +197,20 @@ The Default is `--to-dir=target/antora/site`, `--stactrace`
 </configuration>
 ----
 
+| `node/version`
+| The optional value of node to use to run Antora.
+The Default is `v18.12.1`
+|
+.pom.xml
+[source,xml]
+----
+<configuration>
+  <node>
+    <version>v16.16.0</version>
+  </node>
+</configuration>
+----
+
 | `playbook`
 | The Antora Playbook to use
 The Default is `antora-playbook.yml`

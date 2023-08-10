@@ -71,8 +71,8 @@ public class AntoraMavenPlugin
 
 	private final String antoraExecutable = "node_modules/.bin/antora";
 
-	@Parameter(name = "node.version")
-	private String nodeVersion = "v18.12.1";
+	@Parameter
+	private Node node  = new Node();
 
 	@Parameter
 	private List<String> packages = new ArrayList<>();
@@ -83,7 +83,7 @@ public class AntoraMavenPlugin
 			frontendMavenPlugin(),
 			goal("install-node-and-npm"),
 			configuration(
-				element(name("nodeVersion"), this.nodeVersion)
+				element(name("nodeVersion"), this.node.getVersion())
 			),
 			executionEnvironment()
 		);

@@ -1,0 +1,13 @@
+site:
+  title: Sample
+content:
+  sources:
+    - url: ./../../../..
+      branches: HEAD
+      start_path: antora-maven-plugin/target/it/nodeVersion/
+ui:
+  bundle:
+    url: https://github.com/spring-io/antora-ui-spring/releases/download/v0.3.3/ui-bundle.zip
+runtime:
+  log:
+    failure_level: warn
