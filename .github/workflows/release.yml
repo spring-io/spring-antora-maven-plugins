@@ -55,4 +55,4 @@ jobs:
           sed -i 's/^:version: .*/:version: ${{ github.event.inputs.release-version }}/' README.adoc
           git commit -am 'Update README to Release ${{ github.event.inputs.release-version }}'
       - name: Push the Commits
-          git push origin ${GITHUB_REF_NAME:-main}
+        run: git push origin ${GITHUB_REF_NAME:-main}
